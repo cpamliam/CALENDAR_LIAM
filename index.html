@@ -159,11 +159,12 @@
         </div>
         <div class="calendar-grid" id="calendarDays"></div>
     </div>
-    <div class="event-details" id="eventDetails">
-        <p id="eventName"></p>
-        <p id="eventTime"></p>
-        <p id="eventLocation"></p>
-    </div>
+   <div class="event-details" id="eventDetails">
+    <p id="eventName"></p>
+    <p id="eventTime"></p>
+    <p id="eventLocation"></p>
+    <p id="eventLink"></p> <!-- Nouveau paragraphe pour le lien -->
+</div>
     <script>
         const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
                             "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
@@ -246,6 +247,8 @@
             "2025-10-02": { name: "CSRR", time: "14:00", location: "Multi-site" },
             "2025-11-06": { name: "CSRR", time: "14:00", location: "Multi-site" },
             "2025-12-04": { name: "CSRR", time: "14:00", location: "Multi-site" },
+            "2025-08-28": { name: "Déménagement provisoire du Pôle Ouest", time: "Journée entière", location: "Beaulieu",link: "https://liam.assurance-maladie.fr/article/3229853" 
+},
             
             
         
@@ -354,6 +357,13 @@ function showEventDetails(event) {
     document.getElementById('eventName').textContent = `Nom : ${event.name}`;
     document.getElementById('eventTime').textContent = `Heure : ${event.time}`;
     document.getElementById('eventLocation').textContent = `Lieu : ${event.location}`;
+
+    // Nouveau champ "Lien"
+    if(event.link) {
+        document.getElementById('eventLink').innerHTML = `Lien : <a href="${event.link}" target="_blank">${event.link}</a>`;
+    } else {
+        document.getElementById('eventLink').textContent = '';
+    }
 }
 
 // Changement de mois précédent
